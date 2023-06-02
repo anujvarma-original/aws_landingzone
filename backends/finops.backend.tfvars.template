@@ -1,0 +1,4 @@
+profile = "123_abc"
+key     = "xyz-aft"
+bucket  = "example-tfbackend"
+region  = "us-east-1"

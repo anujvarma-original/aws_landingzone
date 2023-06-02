@@ -1,0 +1,17 @@
+name: Push actions
+run-name: ${{ github.actor }} is using GitHub Actions 🚀
+on: [push]
+jobs:
+  TerraformChecks:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: terraform-version
+        uses: dflook/terraform-version@v1.34.0
+      - name: terraform-validate
+        uses: dflook/terraform-validate@v1.34.0
+      - name: terraform-fmt
+        uses: dflook/terraform-fmt@v1.34.0
+      - run: echo "🍏 This job's status is ${{ job.status }}."

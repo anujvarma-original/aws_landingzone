@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.80.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    hooks:
+      - id: terraform_validate
+      - id: terraform_tflint
+      - id: terraform_fmt
+      - id: terraform_docs
+      - id: terraform_tfsec
+      - id: infracost_breakdown
+        args:
+          - --args=--path=.
+          - --args=--terraform-var-file=./tfvars/prod.tfvars
+        verbose: true # Always show costs
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0 # Get the latest from: https://github.com/pre-commit/pre-commit-hooks/releases
+    hooks:
+      - id: trailing-whitespace
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: detect-aws-credentials
+      - id: detect-private-key
+      - id: check-added-large-files
